@@ -1,24 +1,8 @@
-# README
+# Alpha Blog 
+##### Basic Blog For Ruby On Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- The first app for my complete Ruby On Rails developer course.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Routes
+- Covers:
+    - `get` syntax and paths to get route to speak to the correct controller and to call the method.

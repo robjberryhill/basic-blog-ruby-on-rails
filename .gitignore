@@ -29,3 +29,11 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#Ignore images for now.
+/images/*.png
+/*.png
+*.png
+/images/*.jpg
+/*.jpg
+*.jpg
