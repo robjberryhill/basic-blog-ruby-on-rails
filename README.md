@@ -9,3 +9,4 @@
     - creating a table and migration syntax.
     - working with tables and fields in rails console.
     - Adding a model with validations. validate syntax.
+    - create and add to db with a new template and controller.
