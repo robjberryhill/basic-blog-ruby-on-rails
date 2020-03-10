@@ -10,3 +10,4 @@
     - working with tables and fields in rails console.
     - Adding a model with validations. validate syntax.
     - create and add to db with a new template and controller.
+    - Handle errors and redirect to specific views. Creating a show.html.erb.

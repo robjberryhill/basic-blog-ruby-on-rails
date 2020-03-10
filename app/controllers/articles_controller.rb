@@ -1,9 +1,21 @@
 class ArticlesController < ApplicationController
 
+    # The index of a particular table is usually the page to list out all of the records.
+    def index
+        # Assigns all article records to the @articles instance variables.
+        @articles = Article.all
+    end
+
     # @ specifies an instance varible.
     # @ here it is being set to a new Article object.
     def new
         @article = Article.new()
+    end
+
+    # Looking at rake routes you will find the edit page is displayed /articles/:id/edit
+    # We need to set the @article instance to a specific id to be able to edit a particular record.
+    def edit
+        @article = Article.find(params[:id])
     end
     
     def create
@@ -25,6 +37,24 @@ class ArticlesController < ApplicationController
         end
     end
 
+    # This is the page that handles the submission of the edit/update method/page.
+    def update
+        # Set the @article variable instance to the specific record based on the id.
+        @article = Article.find(params[:id])
+
+        # If the record successfully updates the notify and send back to the article page with the updated info.
+        # We need to update something so we again need to white list the information with the article_params method like we did when creating.
+        if @article.update(article_params)
+            flash[:notice] = "Article was successfully updated."
+            redirect_to article_path(@article)
+
+            # Else go back to the edit page.
+        else
+            render :edit
+        end
+    end
+
+    #this handles the submission of a new article.
     def show
         # Shows a specific record or article in this case. based on the id.
         @article = Article.find(params[:id])
@@ -33,6 +63,7 @@ class ArticlesController < ApplicationController
     private
     def article_params
         # params.requires(:toplevelkey).permit(:secondlevelone, :secondleveltwo)
+        # This info is like recieving a json or xml object and being able to change the info.
         params.require(:article).permit(:title, :description)
     end
 
