@@ -15,3 +15,5 @@
     - using link_to helper to create links. using ruby .each do to interate through the records to display them.
     - Use partials for redundant code. Add destroy action.
     - Adding methods in the contoller to use on before_action
+    - Installing bootstrap for Rails 5
+    - Bootstrap 3 styling.
