@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
         # Handles if Articles saves or not based on the validations on the model.
         if @article.save
             # If article saves then redirect to the article with a message.
-            flash[:notice] = "Article was successfully created"
+            flash[:success] = "Article was successfully created"
             redirect_to article_path(@article)
         else
             # If article does not save the re render the new article page. Errors displayed and handled on the new.html.erb
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
         # If the record successfully updates the notify and send back to the article page with the updated info.
         # We need to update something so we again need to white list the information with the article_params method like we did when creating.
         if @article.update(article_params)
-            flash[:notice] = "Article was successfully updated."
+            flash[:success] = "Article was successfully updated."
             redirect_to article_path(@article)
 
             # Else go back to the edit page.
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     def destroy
         # Deletes the record.
         @article.destroy
-        flash[:notice] = "Article was successfully deleted."
+        flash[:danger] = "Article was successfully deleted."
 
         # Sends you back to the main list of articles.
         redirect_to articles_path
