@@ -13,6 +13,7 @@
       <!-- To edit or view a specific record you need to pass in the article. -->
       <td><%= link_to "Edit", edit_article_path(article) %></td>
       <td><%= link_to "View", article_path(article) %></td>
+      <td><%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
     </tr>
   <% end %>
 </table>
