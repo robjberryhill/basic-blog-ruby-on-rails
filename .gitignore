@@ -31,9 +31,9 @@
 /config/master.key
 
 #Ignore images for now.
-/images/*.png
-/*.png
-*.png
+# /images/*.png
+# /*.png
+# *.png
 /images/*.jpg
 /*.jpg
 *.jpg
