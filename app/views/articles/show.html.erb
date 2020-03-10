@@ -1,5 +1,14 @@
-<h1>Article</h2>
-<p>Title: <%= @article.title %></p>
-<p>Description: <%= @article.description %></p>
-<%= link_to "Edit", edit_article_path(@article) %> | 
-<%= link_to "Back To Articles", articles_path %>
+<h2 align="center">Title: <%= @article.title %></h2>
+
+<div class="well col-xs-8 col-xs-offset-2">
+  <h4 class="text-center description"><strong>Description:</strong></h4>
+  <hr>
+  <!-- simple_format displays the formating that you made in the text editor -->
+  <p><%= simple_format(@article.description) %></p>
+
+  <div class="article-actions">
+    <%= link_to "Edit", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+    <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete article" }, class: "btn btn-xs btn-danger" %>
+    <%= link_to "View Articles", articles_path, class: "btn btn-xs btn-success" %>
+  </div>
+</div>

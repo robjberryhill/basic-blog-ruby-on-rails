@@ -3,6 +3,7 @@
     <% flash.each do |name, msg| %>
       <div class='alert alert-<%= "#{name}" %>'>
         <a href="#" class="close" data-dismiss="alert">&#215;</a>
+        <!-- Ruby helper to create a div tage with msg as content and an id and string validation. -->
         <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
       </div>
     <% end %>
