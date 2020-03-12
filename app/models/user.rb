@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :articles
+  before_save { self.email = email.downcase }
   validates :username, presence: true, uniqueness: { case_sensitive: false }, # Turning off case sensitivity rails will ingnore case and treat lowercase and uppercase the same.
             length: { minimum: 3, maximum: 25 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

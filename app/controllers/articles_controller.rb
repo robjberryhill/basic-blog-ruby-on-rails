@@ -20,12 +20,15 @@ class ArticlesController < ApplicationController
     end
     
     def create
+
         # render plain: params[:article].inspect
         # @article.save
         # redirect_to articles_path(@article)
 
         # Creates a new Article object
         @article = Article.new(article_params)
+
+        @article.user = User.first
 
         # Handles if Articles saves or not based on the validations on the model.
         if @article.save
