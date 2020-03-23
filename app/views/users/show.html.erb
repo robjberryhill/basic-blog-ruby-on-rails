@@ -6,4 +6,5 @@
   </div>
 </div>
 <h4 align="center"><%= @user.username %>'s articles.</h4>
+<%# Set the varible to your database records that you want to interate. %>
 <%= render 'articles/article', obj: @user.articles %>
