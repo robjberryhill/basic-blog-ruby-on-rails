@@ -5,7 +5,9 @@ class ArticlesController < ApplicationController
     # The index of a particular table is usually the page to list out all of the records.
     def index
         # Assigns all article records to the @articles instance variables.
-        @articles = Article.all
+        # @articles = Article.paginate(page: params[:page])
+        # Adds pagination to all articles using the gem 'will_paginate', '3.1.5' gem 'bootstrap-will_paginate', '1.0.0'
+        @articles = Article.paginate(page: params[:page], per_page: 4)
     end
 
     # @ specifies an instance varible.

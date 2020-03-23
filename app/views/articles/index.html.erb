@@ -1,3 +1,10 @@
 <h1 align="center">All Articles</h1>
+
+<div align="center">
+  <%= will_paginate %>
+</div>
 <%# Set the varible to your database records that you want to interate. %>
 <%= render 'article', obj: @articles %>
+<div align="center">
+  <%= will_paginate %>
+</div>
