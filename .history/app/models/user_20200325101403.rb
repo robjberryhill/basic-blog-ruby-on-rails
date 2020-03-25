@@ -18,11 +18,6 @@ class User < ActiveRecord::Base
             uniqueness: { case_sensitive: false },
             format: { with: VALID_EMAIL_REGEX } # VALID_EMAIL_REGEX checks for a valid email pattern.
 
-# Adds methods to set and authenticate against a BCrypt password. This mechanism requires you to have a XXX_digest attribute. Where XXX is the attribute name of your desired password.
-# The following validations are added automatically:
-# Password must be present on creation
-# Password length should be less than or equal to 72 bytes
-# Confirmation of password (using a XXX_confirmation attribute)
-  has_secure_password
   
+  has_secure_password
 end

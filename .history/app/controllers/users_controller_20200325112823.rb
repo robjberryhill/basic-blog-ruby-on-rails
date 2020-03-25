@@ -3,10 +3,6 @@ class UsersController < ApplicationController
   # This method runs specified methods before any of the other actions. You can specify only: certain :actions to apply the specified method to.
   before_action :set_user, only: [:edit, :update, :show]
 
-  # Before any other action call the require_user method from the application_controller.
-  # This will require the a user to be logged in for only edit and update.
-  before_action :require_user, only: [:edit, :update]
-
   # Before any other action require the same user for only edit and update.
   # We only want the user that created this record to be able to edit or update or destroy it.
   before_action :require_same_user, only: [:edit, :update]
@@ -61,10 +57,10 @@ class UsersController < ApplicationController
 
   def require_same_user
 
-    # if there is a current user(this method is from application_controller) and it is not the user for the record...
+    # if there is a current user(this method is from application_controller) and it is not the user for the article...
     if current_user != @user
         # Then flash danger message to the user.
-        flash[:danger] = "This is not your account."
+        flash[:danger] = "This is not your article."
         # Then redirect to the home page.
         redirect_to root_path
     end

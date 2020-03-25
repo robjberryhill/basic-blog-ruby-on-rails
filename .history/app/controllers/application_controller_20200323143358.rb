@@ -1,11 +1,7 @@
 class ApplicationController < ActionController::Base
-  # * The methods created here are available to all of your contollers, but by default not available to your views.
-  
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+
   protect_from_forgery with: :exception
 
-  # Declare a controller method as a helper_method is now available to the view:
   helper_method :current_user, :logged_in?
 
   def current_user
@@ -19,13 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    # if user is not logged_in...
     if !logged_in?
-      # Then send message to user.
       flash[:danger] = "You must be logged in to perform that action."
-      # Then redirect to home page.
       redirect_to root_path
-    end
   end
 
 end

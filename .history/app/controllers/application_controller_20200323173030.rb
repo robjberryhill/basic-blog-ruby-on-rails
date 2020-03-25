@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   # * The methods created here are available to all of your contollers, but by default not available to your views.
-  
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-
   # Declare a controller method as a helper_method is now available to the view:
   helper_method :current_user, :logged_in?
 

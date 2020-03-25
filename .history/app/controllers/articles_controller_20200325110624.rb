@@ -93,12 +93,8 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-
-        # if there is a current user(this method is from application_controller) and it is not the user for the article...
         if current_user != @article.user
-            # Then flash danger message to the user.
             flash[:danger] = "This is not your article."
-            # Then redirect to the home page.
             redirect_to root_path
         end
     end

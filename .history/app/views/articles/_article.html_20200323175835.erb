@@ -18,14 +18,12 @@
           </div>
         </div>
 
-        <%# If user is logged_in and the current_user logged_in is equal to the user that created the article then display the actions below. %>
         <% if logged_in? && current_user == article.user %>
           <div class="article-actions">
             <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %>
             <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure you want to delete article" }, class: "btn btn-xs btn-danger" %>
           </div>
         <% end %>
-        
       </div>
     </div>
   </div>

@@ -11,17 +11,9 @@ Rails.application.routes.draw do
 
   # route /signup goes to controller users_controller and calls the new method.
   get 'signup', to: 'users#new'
-
-  # Add the routes index, create, edit, show, update and destroy. all the normal routes resources provides except new.
   resources :users, except: [:new]
 
-  # route /login goes to controller sessions_controller and calls the new method.
   get 'login', to: 'sessions#new'
-
-  # route /login goes to controller sessions_controller and calls the create method when you attempt to create a user on that page/route.
   post 'login', to: 'sessions#create'
-
-  # route /logout goes to controller sessions_controller and calls the destroy method.
   delete 'logout', to: 'sessions#destroy'
-  
 end

@@ -1,15 +1,7 @@
 class ArticlesController < ApplicationController
-    # This calls this method :set_article before the action is called. and only in the specified actions. To prevent redundance and set the article in each method that needs it.
     before_action :set_article, only: [:edit, :update, :show, :destroy]
+    # This calls this method :set_article before the action is called. and only in the specified actions. To prevent redundance and set the article in each method that needs it.
 
-    # Before any other action call the require_user method from the application_controller.
-    # This will require the a user to be logged in for every action except index and show.
-    before_action :require_user, except: [:index, :show]
-
-    # Before any other action require the same user for only edit, update and destroy.
-    # We only want the user that created this record to be able to edit or update or destroy it.
-    before_action :require_same_user, only: [:edit, :update, :destroy]
-    
     # The index of a particular table is usually the page to list out all of the records.
     def index
         # Assigns all article records to the @articles instance variables.
@@ -90,17 +82,6 @@ class ArticlesController < ApplicationController
         # params.requires(:toplevelkey).permit(:secondlevelone, :secondleveltwo)
         # This info is like recieving a json or xml object and being able to change the info.
         params.require(:article).permit(:title, :description)
-    end
-
-    def require_same_user
-
-        # if there is a current user(this method is from application_controller) and it is not the user for the article...
-        if current_user != @article.user
-            # Then flash danger message to the user.
-            flash[:danger] = "This is not your article."
-            # Then redirect to the home page.
-            redirect_to root_path
-        end
     end
 
 end
