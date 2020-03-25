@@ -38,7 +38,9 @@ class ArticlesController < ApplicationController
         # Creates a new Article object
         @article = Article.new(article_params)
 
-        @article.user = User.first
+        # @article.user = User.first
+        # Can now set it to the current user because we have that method available and are requiring a user to create.
+        @article.user = current_user
 
         # Handles if Articles saves or not based on the validations on the model.
         if @article.save
