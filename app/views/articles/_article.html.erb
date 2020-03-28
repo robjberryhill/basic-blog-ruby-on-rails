@@ -18,7 +18,9 @@
             </p>
           </div>
         </div>
-
+        <% if article.categories.any? %>
+          <p>Categories: <%= render article.categories %></p>
+        <% end %>
         <%# If user is logged_in and the current_user logged_in is equal to the user that created the article or is an admin user then display the actions below. %>
         <% if logged_in? && current_user == article.user || current_user.admin? %>
           <div class="article-actions">

@@ -1,6 +1,7 @@
 <h2 align="center">Title: <%= @article.title %></h2>
 
 <div class="well col-xs-8 col-xs-offset-2">
+  <%# If the article has a author/user then display the author/user info for the article %>
   <% if @article.user %>
     <ul class="listing">
       <div class="row text-center">
@@ -17,7 +18,11 @@
   <hr>
   <!-- simple_format displays the formating that you made in the text editor -->
   <p><%= simple_format(@article.description) %></p>
-
+  <% if @article.categories.any? %>
+    <%# We will now interate and print each category %>
+    <%# This render article categories will have almost the same effect as a .each %>
+    <p>Categories: <%= render @article.categories %></p>
+  <% end %>
   <div class="article-actions">
 
     <%# If user is logged_in and the current_user logged_in is equal to the user that created the article then display the actions below. %>

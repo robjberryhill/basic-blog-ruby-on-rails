@@ -89,8 +89,11 @@ class ArticlesController < ApplicationController
 
   def article_params
     # params.requires(:toplevelkey).permit(:secondlevelone, :secondleveltwo)
+    # We are white listing these parameters.
+    # We need to passin/whitelist the category_ids...
+    # that are associated with the article from the category table.
     # This info is like recieving a json or xml object and being able to change the info.
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def require_same_user
