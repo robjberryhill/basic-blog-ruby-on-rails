@@ -1,7 +1,14 @@
 require "test_helper"
 
 class CreateCategoriesTest < ActionDispatch::IntegrationTest
+  def setup
+    # Here we are creating an admin user to login in to the get new/create because it is admin restricted.
+    @user = User.create(username: "LittleJohn", email: "john@little.com",
+                        password: "password", admin: true)
+  end
   test "new form a create category" do
+    # We are signing in the admin user here with a helper method from test_helper.
+    sign_in_as(@user, "password")
     # Will check if there is a path and method for new.
     # If there is then pass this stage of test.
     get new_category_path
@@ -29,6 +36,8 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
   end
 
   test "invalid category failure" do
+    # We are signing in the admin user here with a helper method from test_helper.
+    sign_in_as(@user, "password")
     get new_category_path
     assert_template "categories/new"
     # We are asserting that there will be no difference if there is a post with a blank name.

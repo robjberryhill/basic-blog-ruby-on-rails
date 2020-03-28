@@ -1,4 +1,4 @@
-# Alpha Blog 
+# Alpha Blog
 ##### Basic Blog For Ruby On Rails
 
 - The first app for my complete Ruby On Rails developer course.
@@ -17,3 +17,5 @@
     - Adding methods in the contoller to use on before_action
     - Installing bootstrap for Rails 5
     - Bootstrap 3 styling.
+    - Users & Sessions
+    - Testing - Check the test folder. test/controllers - test/integration - test/models
