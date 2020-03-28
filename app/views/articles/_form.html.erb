@@ -1,6 +1,8 @@
+<%# Setting the obj to @article for errors %>
 <%= render "shared/errors", obj: @article %>
 <div class="row">
   <div class="col-xs-12">
+    <%# passing in the article to create a form %>
     <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |form| %>
       <div class="form-group">
         <div class="col-sm-2 control-label">

@@ -10,6 +10,7 @@
         <div class="article-body">
           <p><%= truncate(article.description, length: 60) %></p>
           <div class="article-meta-details">
+            <%# time_ago_in_words is a ruby method for displaying dates. %>
             <p>
               <small>Created By: <%= article.user.username if article.user %>,
                     <%= time_ago_in_words(article.created_at) %> ago,
@@ -21,11 +22,12 @@
         <%# If user is logged_in and the current_user logged_in is equal to the user that created the article or is an admin user then display the actions below. %>
         <% if logged_in? && current_user == article.user || current_user.admin? %>
           <div class="article-actions">
+            <%# you must pass in the article to edit or delete. %>
             <%= link_to "Edit", edit_article_path(article), class: "btn btn-xs btn-primary" %>
             <%= link_to "Delete", article_path(article), method: :delete, data: { confirm: "Are you sure you want to delete article" }, class: "btn btn-xs btn-danger" %>
           </div>
         <% end %>
-        
+
       </div>
     </div>
   </div>

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   # new method in sessions goes to app/views/sessions/new.html.erb and displays the login form.
   def new
   end
@@ -9,7 +8,7 @@ class SessionsController < ApplicationController
     # Find user by their email provided in the form through params
     user = User.find_by(email: params[:session][:email].downcase)
     # If the user exists and their password is correct...
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       # Then assign the session user_id in the browser the actual users id
       session[:user_id] = user.id
       # Then give user the message.
@@ -34,5 +33,4 @@ class SessionsController < ApplicationController
     # redirect to the home page.
     redirect_to root_path
   end
-
 end
