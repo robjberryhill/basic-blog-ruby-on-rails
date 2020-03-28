@@ -27,4 +27,18 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     # We are asserting that the string sports will be displayed in the body html.
     assert_match "sports", response.body
   end
+
+  test "invalid category failure" do
+    get new_category_path
+    assert_template "categories/new"
+    # We are asserting that there will be no difference if there is a post with a blank name.
+    assert_no_difference "Category.count" do
+      post categories_path, params: { category: { name: " " } }
+    end
+    assert_template "categories/new"
+    # We are asserting that ther will be a h2 tag with class panel-title rendered.
+    assert_select "h2.panel-title"
+    # We are asserting that ther will be a div tag with class panel-body rendered.
+    assert_select "div.panel-body"
+  end
 end
